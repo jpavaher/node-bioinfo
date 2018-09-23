@@ -21,11 +21,10 @@ app.post('/', function (req, res) {
     } else {
       let bio = JSON.parse(body)
       console.log(bio) 
-      if(bio.main == undefined){
-        res.render('index', {personId: null, error: 'Error, please try again'});
+      if(bio == undefined){
+        res.send('Error, please try again');
       } else {
-        let personId = `It's ${bio.main.temp} degrees in ${bio.name}!`;
-        res.render('index', {bio: bioText, error: null});
+        res.send(bio);
       }
     }
   });
